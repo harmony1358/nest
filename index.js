@@ -11,6 +11,7 @@ import Style from './res/style.css';
 import ExampleStyle from './res/example.css';
 import DragInteractor from './src/DragInteractor.js';
 import DragPainter from './src/DragPainter.js';
+import LayoutDistributable from './src/LayoutDistributable.js';
 
 export {ApplicationContext};
 export {ExampleComponent};
@@ -25,5 +26,6 @@ export {LayoutInteractor};
 export {HandlerInteractor};
 export {DragInteractor};
 export {DragPainter};
+export {LayoutDistributable};
 
 

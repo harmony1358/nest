@@ -7,7 +7,7 @@
     background-color: #1c1d25;
     z-index: 100;
     overflow: hidden;
-    margin: 4x;
+    margin: 4px;
 }
 
 :local .component {
@@ -26,6 +26,6 @@
     bottom: 0;
     z-index: 500;
     overflow: hidden;
-    margin: 55px;
+    margin: 4px;
     /* pointer-events:none; */
 }

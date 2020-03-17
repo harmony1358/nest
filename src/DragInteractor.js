@@ -45,7 +45,6 @@ class DragInteractor extends LayoutInteractor {
         this.interactionLayer.show();
         this.currentTransferrable.onDragTransferrableStarted();
         this.mouseMove(e);
-        console.log(this.currentTargets);
     }
 
     mouseDown (e) {

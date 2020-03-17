@@ -4,15 +4,15 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: #1c1d25;
+    background-color: #cccccc;
     z-index: 100;
     overflow: hidden;
-    margin: 4px;
+    margin: 0px;
 }
 
 :local .component {
     position: absolute;
-    background-color: #282b38;
+    background-color: #cccccc;
     min-width: 10px;
     min-height: 10px;
     overflow: hidden;
@@ -26,6 +26,6 @@
     bottom: 0;
     z-index: 500;
     overflow: hidden;
-    margin: 4px;
+    margin: 0px;
     /* pointer-events:none; */
 }

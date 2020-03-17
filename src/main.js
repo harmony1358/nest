@@ -94,7 +94,6 @@ suggestHandlersButton.addEventListener('click', ()=>{
 // startDragButton.classList.add(ExampleStyle.button);
 comp3.body.addEventListener('mousedown', (e)=>{ 
 
-    console.log(e.offsetX);
     app.interactionManager.dragInteractor.startDraggingTransferrable (e, comp3);
 
 });

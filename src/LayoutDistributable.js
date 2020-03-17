@@ -68,13 +68,14 @@ class LayoutDistributable {
     render ()                   {}
 
     applyRect(rect)             {
-        
-        if (this.body==null) return;
 
-        this.body.style.left = rect.x+'px';
-        this.body.style.top = rect.y+'px';
-        this.body.style.width = rect.width+'px';
-        this.body.style.height = rect.height+'px';
+        const target = document.getElementById(this.id);
+        if (this.body==target) return; else 
+        
+        target.style.left = rect.x+'px';
+        target.style.top = rect.y+'px';
+        target.style.width = rect.width+'px';
+        target.style.height = rect.height+'px';
 
         this.onLayout();
     }
@@ -507,6 +508,11 @@ class LayoutDistributable {
 
     _distributeStack (rect) {
         //TODO: Distribute stack
+    }
+
+
+    reclaimBody() {
+        this.body = document.getElementById(this.id);
     }
 }
 

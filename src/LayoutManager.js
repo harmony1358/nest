@@ -61,7 +61,7 @@ class LayoutManager {
         this._height    = this.context.container.offsetHeight;
         
         if (this.model==null) return null;
-
+        
         let rect = {x: 0, y: 0, width: this.width, height: this.height};
 
         this.model.measure(rect);

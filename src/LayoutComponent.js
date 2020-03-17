@@ -8,7 +8,9 @@ class LayoutComponent extends LayoutCell {
         super(context);
         this._layoutConstraint = null;
         this._body = null;
-        this._flavours = ['LayoutComponent'];    
+        this._flavours = ['LayoutComponent'];   
+        
+        context.components.push(this);
     }
 
     get isComponent()                       {return true;}

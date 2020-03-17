@@ -20,13 +20,14 @@ class ApplicationContext {
     get container()             {return this._container;}
 
     //TODO: Create separate Stage class
-    createStage () {
+    createStage (render) {
         
-        this._components.forEach((c)=>{ let node = c.render(); this._container.appendChild(node); });
-        
+        if (render) {
+            this._components.forEach((c)=>{ let node = c.render(); this._container.appendChild(node); });
+        }
     }
 
-    init (containerId) {
+    init (containerId, render) {
 
         this._containerId = containerId;
         this._container = document.getElementById(this.containerId);
@@ -37,7 +38,7 @@ class ApplicationContext {
         this._layoutManager = new LayoutManager(this);
         this._interactionManager = new InteractionManager(this);
 
-        this.createStage();
+        this.createStage(render);
         
         this.layoutManager.doLayout();
         this.interactionManager.init();

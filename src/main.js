@@ -9,7 +9,7 @@ import ExampleStyle from '../res/example.css';
 
 let app = new ApplicationContext();
 
-app.init('stage');
+app.init('stage', true);
 
 let mainRow = new LayoutCell(app);
 mainRow.isDropTarget = false;
@@ -40,14 +40,14 @@ let comp8 = new ExampleComponent(app);
 let compFH = new ExampleComponent(app);
 
 //leftColumn.addChild(comp1);
-leftColumn.addChild(compFH);
-leftColumn.addChild(comp2);
-leftColumn.addChild(comp3);
-centerColumn.addChild(comp4);
-centerColumn.addChild(comp5);
-rightColumn.addChild(comp6);
-rightColumn.addChild(comp7);
-rightColumn.addChild(comp8);
+leftColumn.addChild(compFH, true);
+leftColumn.addChild(comp2, true);
+leftColumn.addChild(comp3, true);
+centerColumn.addChild(comp4, true);
+centerColumn.addChild(comp5, true);
+rightColumn.addChild(comp6, true);
+rightColumn.addChild(comp7, true);
+rightColumn.addChild(comp8, true);
 
 compFH.minSize.height = 70;
 compFH.maxSize.height = 70;
@@ -117,9 +117,9 @@ comp2._innerDiv.appendChild(liveUpdateButton);
 //comp3._innerDiv.appendChild(startDragButton);
 comp7._innerDiv.appendChild(suggestHandlersButton);
 
-mainRow.addChild(leftColumn);
-mainRow.addChild(centerColumn);
-mainRow.addChild(rightColumn);
+mainRow.addChild(leftColumn, true);
+mainRow.addChild(centerColumn, true);
+mainRow.addChild(rightColumn, true);
 
 app.layoutManager.model = mainRow;
 app.layoutManager.doLayout();

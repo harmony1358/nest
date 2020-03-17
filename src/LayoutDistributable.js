@@ -80,12 +80,15 @@ class LayoutDistributable {
     }
     
     //FIXME: Attaching to DOM tree should be done somwhere else
-    addChild (child) {
+    addChild (child, render) {
         
         this._children.push(child);
         if ((!child.isAttached)&&(child.isComponent)) {
-            child.render();
-            this.context.container.appendChild(child.body);
+
+            if (render) {
+                child.render();
+                this.context.container.appendChild(child.body);
+            }
             child.isAttached = true;
             child.onAttach();
         }

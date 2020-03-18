@@ -70,7 +70,7 @@ class LayoutDistributable {
     applyRect(rect)             {
 
         const target = document.getElementById(this.id);
-        if (this.body==target) return; else 
+        if (target==null) return; 
         
         target.style.left = rect.x+'px';
         target.style.top = rect.y+'px';

@@ -38,7 +38,8 @@ class LayoutDistributable {
     static get GROW_FIXED()             {return 'GROW_FIXED';}
     static get GROW_FLEX()              {return 'GROW_FLEX';}
 
-    get context()   {return this._context;}
+    get context()               {return this._context;}
+    set context(context)        {this._context = context;}
     get id()                    {return this._id;}
     set id(id)                  {this._id = id; if (this._body!=null) this._body.setAttribute('id', id); }
     get direction()             {return this._direction;}

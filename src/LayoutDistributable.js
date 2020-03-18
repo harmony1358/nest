@@ -273,7 +273,6 @@ class LayoutDistributable {
     save () {
 
         this._savedPreferredSize = Object.assign({}, this.preferredSize);
-        
         this.children.forEach((c)=>{c.save();});
 
     }

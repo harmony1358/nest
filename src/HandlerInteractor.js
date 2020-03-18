@@ -120,7 +120,7 @@ class HandlerInteractor extends LayoutInteractor {
         
         //FIXME: Find real container position, calc rect in LayoutManager
         let rect = this.context.layoutManager.rect;
-        if (this.layoutManager.model!=null) return this.layoutManager.model.isOverHandler(e.clientX-rect.left, e.clientY-rect.top, this.hitTolerance);
+        if (this.layoutManager.model!=null && rect!=null) return this.layoutManager.model.isOverHandler(e.clientX-rect.left, e.clientY-rect.top, this.hitTolerance);
                 
     }
 
@@ -183,8 +183,6 @@ class HandlerInteractor extends LayoutInteractor {
         
         handler['maxOffsetLeft'] = leftMin < rightMax ? -leftMin : -rightMax;
         handler['maxOffsetRight'] = rightMin < leftMax ? rightMin : leftMax;
-
-
     }
 
 }

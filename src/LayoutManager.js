@@ -12,8 +12,9 @@ class LayoutManager {
         this._width          = 0;
         this._height         = 0;
 
-        this._model          = null;
-        this._rect           = null;
+        this._model             = null;
+        this._rect              = null;
+        this._onLayoutChanged   = ()=>{};
 
     }
     
@@ -24,6 +25,8 @@ class LayoutManager {
     get width()                 {return this._width;}
     get height()                {return this._height;}
     get rect()                  {return this._rect;}
+    get onLayoutChanged()      {return this._onLayoutChanged;}
+    set onLayoutChanged(callBack) {this._onLayoutChanged = callBack};
 
     get context()       {return this._context;}
 
@@ -67,6 +70,7 @@ class LayoutManager {
         this.model.measure(rect);
         this.model.distribute(rect);
         
+        this._onLayoutChanged();
     }
 
     getParentOf (id) {

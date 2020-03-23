@@ -1,10 +1,14 @@
+:root {
+    --nest-background-color: #cccccc;
+}
+
 :local .stage {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: #cccccc;
+    background-color: var(--nest-background-color);
     z-index: 100;
     overflow: hidden;
     margin: 0px;
@@ -12,7 +16,7 @@
 
 :local .component {
     position: absolute;
-    background-color: #cccccc;
+    background-color: var(--nest-background-color);
     min-width: 10px;
     min-height: 10px;
     overflow: hidden;

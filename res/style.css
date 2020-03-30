@@ -1,6 +1,9 @@
 :root {
     --nest-background-color: #cccccc;
-    --nest-margin: 0px;
+    --nest-margin-left: 0px;
+    --nest-margin-right: 0px;
+    --nest-margin-top: 0px;
+    --nest-margin-bottom: 0px;
 }
 
 :local .stage {
@@ -12,7 +15,10 @@
     background-color: var(--nest-background-color);
     z-index: 100;
     overflow: hidden;
-    margin: var(--nest-margin);
+    margin-left: var(--nest-margin-left);
+    margin-right: var(--nest-margin-right);
+    margin-bottom: var(--nest-margin-bottom);
+    margin-top: var(--nest-margin-top);
 }
 
 :local .component {
@@ -31,6 +37,9 @@
     bottom: 0;
     z-index: 500;
     overflow: hidden;
-    margin: var(--nest-margin);
+    margin-left: var(--nest-margin-left);
+    margin-right: var(--nest-margin-right);
+    margin-bottom: var(--nest-margin-bottom);
+    margin-top: var(--nest-margin-top);
     /* pointer-events:none; */
 }

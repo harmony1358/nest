@@ -1,5 +1,6 @@
 :root {
     --nest-background-color: #cccccc;
+    --nest-margin: 0px;
 }
 
 :local .stage {
@@ -11,7 +12,7 @@
     background-color: var(--nest-background-color);
     z-index: 100;
     overflow: hidden;
-    margin: 0px;
+    margin: var(--nest-margin);
 }
 
 :local .component {
@@ -30,6 +31,6 @@
     bottom: 0;
     z-index: 500;
     overflow: hidden;
-    margin: 0px;
+    margin: var(--nest-margin);
     /* pointer-events:none; */
 }

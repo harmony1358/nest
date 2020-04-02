@@ -5,6 +5,7 @@ class LayoutCell extends LayoutDistributable {
 
         super(context);
 
+        this._type              = 'LayoutCell';
         this._name              = 'Unnamed';
 
         this._acceptsFlavours   = ['LayoutComponent'];
@@ -12,6 +13,7 @@ class LayoutCell extends LayoutDistributable {
 
     }
 
+    get type()                  {return this._type;}
     get name()                  {return this._name;}
     set name(name)              {this._name = name;}
 

@@ -6,6 +6,9 @@ class LayoutComponent extends LayoutCell {
     constructor (context) {
 
         super(context);
+
+        this._type = 'LayoutComponent';
+
         this._layoutConstraint = null;
         this._body = null;
         this._flavours = ['LayoutComponent'];   
@@ -13,6 +16,7 @@ class LayoutComponent extends LayoutCell {
         context.components.push(this);
     }
 
+    get type()                              {return this._type;}
     get isComponent()                       {return true;}
     get flavours()                          {return this._flavours;}
     get isDropTarget()                      {return false;}

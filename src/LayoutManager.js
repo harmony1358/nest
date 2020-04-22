@@ -80,6 +80,11 @@ class LayoutManager {
 
     }
 
+    removeComponent (id) {
+        this.getParentOf(id).removeChildById(id);
+        this.doLayout();
+    }
+
     findCellById (id) {
 
         if (this.model==null) return null;

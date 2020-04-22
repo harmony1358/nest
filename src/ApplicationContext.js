@@ -44,6 +44,19 @@ class ApplicationContext {
         this.interactionManager.init();
       
     }
+
+    unregisterComponent (layoutComponent) {
+
+        let index = -1;
+        for (let i=0; i<this._components.length; i++) {
+            if (this._components[i].id==layoutComponent.id) {
+                index = i;
+                break;
+            }
+        }
+
+        this._components.splice (index, 1);
+    }
 }
 
 export default ApplicationContext;

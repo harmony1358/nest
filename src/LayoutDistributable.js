@@ -98,6 +98,33 @@ class LayoutDistributable {
 
     }
 
+    removeChild (child) {
+
+        this.context.unregisterComponent(child);
+        
+        let index = -1;
+        for (let i=0; i<this._children.length; i++) {
+            if (this._children[i].id==child.id) {
+                index = i;
+                break;
+            }
+        }
+
+        this._children.splice (index, 1);
+        
+        this.onLayout();
+        child.destroy();
+
+    }
+
+    removeChildById (id) {
+
+        let child = this.findCellById(id);
+        this.removeChild(child);
+    }
+
+    
+
     getParentOf (id) {
         
         for (let i=0; i<this.children.length; i++) {
@@ -283,8 +310,9 @@ class LayoutDistributable {
 
     destroy() {
         
-                this.children.forEach((c)=>{c.destroy();});
-                this.context = null;
+        this.children.forEach((c)=>{c.destroy();});
+        
+        this.context = null;
         
     }
 

@@ -80,11 +80,22 @@ class LayoutDistributable {
 
         this.onLayout();
     }
+
+    unshiftChild (child, render) {
+        this._children.unshift(child);
+        return this._doAddChild(child, render);
+    }
     
     //FIXME: Attaching to DOM tree should be done somwhere else
     addChild (child, render) {
         
         this._children.push(child);
+        return this._doAddChild(child, render);
+
+    }
+
+    _doAddChild (child, render) {
+
         if ((!child.isAttached)&&(child.isComponent)) {
 
             if (render) {
@@ -95,7 +106,6 @@ class LayoutDistributable {
             child.onAttach();
         }
         return this;
-
     }
 
     removeChild (child) {

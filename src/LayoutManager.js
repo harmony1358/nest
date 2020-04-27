@@ -80,8 +80,14 @@ class LayoutManager {
 
     }
 
-    removeComponent (id) {
-        this.getParentOf(id).removeChildById(id);
+    removeComponent (id, removeEmptyParent) {
+        let parent = this.getParentOf(id);
+        parent.removeChildById(id);
+
+        if (parent.children.length === 0 && removeEmptyParent) {
+            this.getParentOf(parent.id).removeChildById(parent.id);
+        }
+        
         this.doLayout();
     }
 

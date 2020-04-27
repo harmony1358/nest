@@ -85,6 +85,22 @@ class LayoutDistributable {
         this._children.unshift(child);
         return this._doAddChild(child, render);
     }
+
+    addChildAfter (child, precedingId, render) {
+        let index = -1;
+        for (let i=0; i<this.children.length; i++) {
+            if (this.children[i].id === precedingId) {
+                index = i;
+                break;
+            }
+        }
+        if (index === -1) {
+            this.unshiftChild(child, render);
+        } else {
+            this._children.splice(index+1, 0, child);
+            return this._doAddChild(child, render);
+        }
+    }
     
     //FIXME: Attaching to DOM tree should be done somwhere else
     addChild (child, render) {

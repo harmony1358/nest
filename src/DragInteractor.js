@@ -83,7 +83,10 @@ class DragInteractor extends LayoutInteractor {
 
         let x = this._initialAnchor.x+offset.x;
         let y = this._initialAnchor.y+offset.y;
-        this._currentDropTarget = this._getNearestTarget(e.clientX, e.clientY);
+        let midX = x + this._currentTransferrable.rect.width/2;
+        let midY = y + this._currentTransferrable.rect.height/2;
+
+        this._currentDropTarget = this._getNearestTarget(midX, midY);
         this._currentTransferrable.onDragTransferrable();
 
         window.requestAnimationFrame(()=>{

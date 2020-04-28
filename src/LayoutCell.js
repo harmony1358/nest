@@ -18,6 +18,7 @@ class LayoutCell extends LayoutDistributable {
     set name(name)              {this._name = name;}
 
     get acceptsFlavours()       {return this._acceptsFlavours;}
+    set acceptsFlavours(flavs)  {this._acceptsFlavours = flavs;}
   
     //Drop Target Interface
     getDropTargets (flavours, targets)   {
@@ -45,19 +46,28 @@ class LayoutCell extends LayoutDistributable {
 
     _createDropTargets (flavours, targets) {
 
-        for (let i=0; i<this.children.length; i++) {
+        const topRect = {...this.rect};
+        topRect.height = topRect.height / 2;
 
-            targets.push({
-                flavours: this.acceptsFlavours,
-                rect: this.children[i].rect,
-                anchor: {x: this.children[i].rect.x+this.children[i].rect.width/2, y: this.children[i].rect.y+this.children[i].rect.height/2},
-                target: this,
-                before: this.children[i].id,
-                bname: this.children[i].name
-            });
+        const bottomRect = {...topRect};
+        bottomRect.y = bottomRect.y + topRect.height;
 
-        }
+        
+        targets.push({
+            flavours: this.acceptsFlavours,
+            rect: topRect,
+            anchor: {x: topRect.x+topRect.width/2, y: topRect.y+topRect.height/2},
+            target: this,
+            position: 'first'
+        });
 
+        targets.push({
+            flavours: this.acceptsFlavours,
+            rect: bottomRect,
+            anchor: {x: bottomRect.x+bottomRect.width/2, y: bottomRect.y+bottomRect.height/2},
+            target: this,
+            position: 'last'
+        });
     }
 
     onDrop (transferrableObject, target) {
@@ -67,22 +77,13 @@ class LayoutCell extends LayoutDistributable {
         
         this.setActualToPreferred();
 
-        if (target.before) {
-
-            let index = -1;
-            for (let i=0; i<this.children.length; i++) {
-                if (this.children[i].id==target.before) {
-                    index = i;
-                    break;
-                }
-            }
-
-            this.children.splice (index, 0, transferrableObject);
+        if (target.position === 'first') {
+            this.children.unshift(transferrableObject);
             this.context.layoutManager.doLayout();
-
+        } else {
+            this.children.push(transferrableObject);
+            this.context.layoutManager.doLayout();
         }
-
-
     }
 
 }

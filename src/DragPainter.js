@@ -3,7 +3,7 @@ class DragPainter {
     static paintHelper (interactionLayer, x, y, transferrableObject, dropTarget, debugTargets) {
 
         let rect = transferrableObject.rect;
-
+        
         interactionLayer.clear();
         interactionLayer.ctx.strokeStyle = 'rgb(232, 0, 82)';
         interactionLayer.ctx.fillStyle = 'black';

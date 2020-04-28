@@ -50,21 +50,18 @@ class InteractionManager {
 
     _containerMouseMove (e) {
        
-        //this.handlerInteractor.mouseMove(e);
         this.currentInteractor.mouseMove(e);
 
     }
 
     _containerMouseDown (e) {
         
-        //this.handlerInteractor.mouseDown(e);
         this.currentInteractor.mouseDown(e);
 
     }
 
     _containerMouseUp (e) {
 
-        //this.handlerInteractor.mouseUp(e);
         this.currentInteractor.mouseUp(e);
 
     }

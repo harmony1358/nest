@@ -29,6 +29,11 @@ class DragInteractor extends LayoutInteractor {
     startDraggingTransferrable (e, transferrableObject, anchor) {
 
         this.interactionManager.setInteractor(this);
+
+        if (this._lastMouseMoveEvent == null) {
+            this._lastMouseMoveEvent = e;
+        }
+
         if (anchor==null) {
 
             anchor = {  x: this._lastMouseMoveEvent.clientX-this.layoutManager.rect.left-e.offsetX, 
@@ -40,10 +45,11 @@ class DragInteractor extends LayoutInteractor {
         this._initialMouseEvent = this._lastMouseMoveEvent;
         this._initialAnchor = anchor;
         this._isDragging = true;
+        
         this._currentTransferrable = transferrableObject;
-        this._currentTargets = this.layoutManager.getDropTargets (this.currentTransferrable.flavours);
+        this._currentTargets = this.layoutManager.getDropTargets (this._currentTransferrable.flavours);
         this.interactionLayer.show();
-        this.currentTransferrable.onDragTransferrableStarted();
+        this._currentTransferrable.onDragTransferrableStarted();
         this.mouseMove(e);
     }
 
@@ -53,9 +59,9 @@ class DragInteractor extends LayoutInteractor {
 
     mouseUp (e) {
 
-        if (this.currentTransferrable!=null&&this.currentDropTarget!=null) {
-            this.currentTransferrable.onBeforeDrop(null);
-            this.currentDropTarget.target.onDrop(this.currentTransferrable, this.currentDropTarget);
+        if (this._currentTransferrable!=null&&this._currentDropTarget!=null) {
+            this._currentTransferrable.onBeforeDrop(null);
+            this._currentDropTarget.target.onDrop(this._currentTransferrable, this._currentDropTarget);
         } 
 
         this._isDragging = false;
@@ -77,24 +83,23 @@ class DragInteractor extends LayoutInteractor {
 
         let x = this._initialAnchor.x+offset.x;
         let y = this._initialAnchor.y+offset.y;
-        
         this._currentDropTarget = this._getNearestTarget(e.clientX, e.clientY);
-        this.currentTransferrable.onDragTransferrable();
+        this._currentTransferrable.onDragTransferrable();
 
         window.requestAnimationFrame(()=>{
-            if (this.currentTransferrable==null) return;
-            this.currentTransferrable.dragPainter.paintHelper(this.interactionLayer, x, y, this.currentTransferrable, this.currentDropTarget);
+            if (this._currentTransferrable==null) return;
+            this._currentTransferrable.dragPainter.paintHelper(this.interactionLayer, x, y, this._currentTransferrable, this._currentDropTarget);
         });
     }
 
     _getNearestTarget (x, y) {
 
-        if (this.currentTargets==null) return;
+        if (this._currentTargets==null) return;
         let min = Number.MAX_SAFE_INTEGER;
         let target = null;
 
-        this.currentTargets.forEach((t)=>{
-            let dist = this._getDistance(x, y, t, this.minTargetDistance);
+        this._currentTargets.forEach((t)=>{
+            let dist = this._getDistance(x, y, t, this._minTargetDistance);
             if (dist<min) {
                 min = dist;
                 target = t;

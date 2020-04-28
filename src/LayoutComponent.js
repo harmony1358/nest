@@ -19,6 +19,7 @@ class LayoutComponent extends LayoutCell {
     get type()                              {return this._type;}
     get isComponent()                       {return true;}
     get flavours()                          {return this._flavours;}
+    set flavours(flav)                      {this._flavours = flav;}
     get isDropTarget()                      {return false;}
     get dragPainter()                       {return DragPainter;}
 

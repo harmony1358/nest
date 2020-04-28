@@ -99,7 +99,6 @@ class LayoutManager {
     }
 
     getDropTargets (flavours) {
-        
         let targets = [];
         if (this.model==null) return targets;
         this.model.getDropTargets(flavours, targets);

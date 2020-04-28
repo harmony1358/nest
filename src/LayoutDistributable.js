@@ -12,7 +12,7 @@ class LayoutDistributable {
 
         this._direction     = LayoutDistributable.DIRECTION_HORIZONTAL;
         this._minSize       = {width: 70, height: 70};
-        this._maxSize       = {width: 3000, height: 3000};
+        this._maxSize       = {width: 7680, height: 7680};
         this._preferredSize = {width: 300, height: 300};
         
         this._savedPreferredSize = {width: 0, height: 0};

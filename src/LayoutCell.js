@@ -46,25 +46,36 @@ class LayoutCell extends LayoutDistributable {
 
     _createDropTargets (flavours, targets) {
 
-        const topRect = {...this.rect};
-        topRect.height = topRect.height / 2;
+        let firstRect, lastRect;
 
-        const bottomRect = {...topRect};
-        bottomRect.y = bottomRect.y + topRect.height;
+        firstRect = {...this.rect};
+        lastRect = {...this.rect};
 
-        
+        if (this.direction === LayoutDistributable.DIRECTION_VERTICAL) {
+            firstRect.height = firstRect.height / 2;            
+            lastRect.y = lastRect.y + lastRect.height / 2;
+            lastRect.height = lastRect.height / 2;
+        } else {
+            firstRect.width = firstRect.width / 2;            
+            lastRect.x = lastRect.x + lastRect.width / 2;
+            lastRect.width = lastRect.width / 2;
+        }
+
+        const firstAnchor = {x: firstRect.x+firstRect.width/2, y: firstRect.y+firstRect.height/2};
+        const lastAnchor = {x: lastRect.x+lastRect.width/2, y: lastRect.y+lastRect.height/2};
+
         targets.push({
             flavours: this.acceptsFlavours,
-            rect: topRect,
-            anchor: {x: topRect.x+topRect.width/2, y: topRect.y+topRect.height/2},
+            rect: {...this.rect},
+            anchor: firstAnchor,
             target: this,
             position: 'first'
         });
 
         targets.push({
             flavours: this.acceptsFlavours,
-            rect: bottomRect,
-            anchor: {x: bottomRect.x+bottomRect.width/2, y: bottomRect.y+bottomRect.height/2},
+            rect: {...this.rect},
+            anchor: lastAnchor,
             target: this,
             position: 'last'
         });

@@ -48,8 +48,8 @@ class LayoutCell extends LayoutDistributable {
 
         let firstRect, lastRect;
 
-        firstRect = {...this.rect};
-        lastRect = {...this.rect};
+        firstRect = Object.assign({}, this.rect);
+        lastRect = Object.assign({}, this.rect);
 
         if (this.direction === LayoutDistributable.DIRECTION_VERTICAL) {
             firstRect.height = firstRect.height / 2;            
@@ -66,7 +66,7 @@ class LayoutCell extends LayoutDistributable {
 
         targets.push({
             flavours: this.acceptsFlavours,
-            rect: {...this.rect},
+            rect: Object.assign({}, this.rect),
             anchor: firstAnchor,
             target: this,
             position: 'first'
@@ -74,7 +74,7 @@ class LayoutCell extends LayoutDistributable {
 
         targets.push({
             flavours: this.acceptsFlavours,
-            rect: {...this.rect},
+            rect: Object.assign({}, this.rect),
             anchor: lastAnchor,
             target: this,
             position: 'last'

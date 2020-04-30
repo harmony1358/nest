@@ -15,8 +15,8 @@ class DragPainter {
             interactionLayer.ctx.rect(dropTarget.rect.x+.5, dropTarget.rect.y+.5, dropTarget.rect.width, dropTarget.rect.height);
             interactionLayer.ctx.stroke();
 
-            const firstRect = {...dropTarget.rect};
-            const lastRect = {...dropTarget.rect};
+            const firstRect = Object.assign({}, dropTarget.rect);
+            const lastRect = Object.assign({}, dropTarget.rect);
 
             if (dropTarget.target.direction === LayoutDistributable.DIRECTION_VERTICAL) {
                 firstRect.height = firstRect.height / 3;

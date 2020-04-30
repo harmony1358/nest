@@ -10,7 +10,8 @@ class InteractionManager {
         this._interactionLayer  =   null;
         this._handlerInteractor =   null;
         this._dragInteractor    =   null;
-        this._currentInteractor = null;
+        this._currentInteractor =   null;
+        this._enabled           =   true;
     }
 
     get context()                   {return this._context;}
@@ -18,6 +19,8 @@ class InteractionManager {
     get handlerInteractor()         {return this._handlerInteractor;}
     get dragInteractor()            {return this._dragInteractor;}
     get currentInteractor()         {return this._currentInteractor;}
+    get enabled()                   {return this._enabled;}
+    set enabled(bool)               {this._enabled = bool;}
 
     init () {
 
@@ -49,21 +52,21 @@ class InteractionManager {
     }
 
     _containerMouseMove (e) {
-       
-        this.currentInteractor.mouseMove(e);
-
+        if (this.enabled) {
+            this.currentInteractor.mouseMove(e);
+        }
     }
 
     _containerMouseDown (e) {
-        
-        this.currentInteractor.mouseDown(e);
-
+        if (this.enabled) {
+            this.currentInteractor.mouseDown(e);
+        }
     }
 
     _containerMouseUp (e) {
-
-        this.currentInteractor.mouseUp(e);
-
+        if (this.enabled) {
+            this.currentInteractor.mouseUp(e);
+        }
     }
 
     setInteractor(interactor) {
